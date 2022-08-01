@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <Button
         android:layout_marginRight="10dp"
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:onClick="getWeather"
+                android:onClick="getCurrentWeather"
                 android:text="Ara"
                 android:layout_marginRight="20dp"
                 android:foreground="?android:attr/selectableItemBackground"
@@ -103,247 +103,43 @@
 
         >
         <LinearLayout
+            android:id="@+id/forecastLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="bottom"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/layout1"
+            <include layout="@layout/forecast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/daily_bg"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Day 1"
-                    style="@style/defaultText"></TextView>
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/weather"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0°C"
-                    style="@style/defaultText"></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 m/s"
-                    android:layout_gravity="center"
-                    android:textSize="20dp"></TextView>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout2"
+                android:layout_marginRight="10dp"/>
+            <include layout="@layout/forecast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/daily_bg"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Day 2"
-                    style="@style/defaultText"></TextView>
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/rain"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="0°C"
-                    android:textSize="30dp"></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 m/s"
-                    android:layout_gravity="center"
-                    android:textSize="20dp"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout3"
+                android:layout_marginRight="10dp"/>
+            <include layout="@layout/forecast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/daily_bg"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Day 3"
-                    style="@style/defaultText"></TextView>
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/snowfall"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="0°C"
-                    android:textSize="30dp"></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 m/s"
-                    android:layout_gravity="center"
-                    android:textSize="20dp"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout4"
+                android:layout_marginRight="10dp"/>
+            <include layout="@layout/forecast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/daily_bg"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Day 4"
-                    style="@style/defaultText"></TextView>
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/sun"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="0°C"
-                    android:textSize="30dp"></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 m/s"
-                    android:layout_gravity="center"
-                    android:textSize="20dp"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout5"
+                android:layout_marginRight="10dp"/>
+            <include layout="@layout/forecast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/daily_bg"
-                android:orientation="vertical">
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Day 5"
-                    style="@style/defaultText"></TextView>
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/sun"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="0°C"
-                    android:textSize="30dp"></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 m/s"
-                    android:layout_gravity="center"
-                    android:textSize="20dp"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout6"
+                android:layout_marginRight="10dp"/>
+            <include layout="@layout/forecast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/daily_bg"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Day 6"
-                    style="@style/defaultText"></TextView>
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/sun"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="0°C"
-                    android:textSize="30dp"></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 m/s"
-                    android:layout_gravity="center"
-                    android:textSize="20dp"></TextView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/daily_bg"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Day 7"
-                    style="@style/defaultText"></TextView>
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/sun"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="0°C"
-                    android:textSize="30dp"></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0 m/s"
-                    android:layout_gravity="center"
-                    android:textSize="20dp"></TextView>
-
-            </LinearLayout>
+                android:layout_marginRight="10dp"/>
         </LinearLayout>
     </HorizontalScrollView>
 

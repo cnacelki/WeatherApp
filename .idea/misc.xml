@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/bg.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/WeatherApp/app/src/main/res/drawable/forecast.xml" value="0.19791666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/activity_hourly.xml" value="0.18659420289855072" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/Lenovo/Desktop/WeatherApp/app/src/main/res/drawable/bg.xml" value="0.2484375" />
         <entry key="..\:/Users/Lenovo/Desktop/WeatherApp/app/src/main/res/drawable/daily_bg.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/Lenovo/Desktop/WeatherApp/app/src/main/res/drawable/result_bg.xml" value="0.234375" />
