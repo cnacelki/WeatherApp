@@ -15,13 +15,11 @@
         android:name=".WeatherApplication"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".thirdActivity"
-            android:exported="false" />
-        <activity
             android:name=".HourlyActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

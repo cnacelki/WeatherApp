@@ -1,6 +1,5 @@
 package com.example.weatherapp.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.data.models.WeatherForecast
@@ -40,7 +39,7 @@ class MainViewModel @Inject constructor(val repository: WeatherRepository) : Vie
                         _weather.value = WeatherUIState.ForecastSuccess(result)
                     }
                     is Exception -> {
-                        _weather.value = WeatherUIState.Error(result)
+                        _weather.value = WeatherUIState.ForecastError(result)
                     }
                 }
             }
@@ -52,5 +51,6 @@ sealed class WeatherUIState {
     data class MainSuccess(var weatherResult: WeatherMain?) : WeatherUIState()
     data class ForecastSuccess(var forecastResult: WeatherForecast?) : WeatherUIState()
     data class Error(var error: Exception) : WeatherUIState()
+    data class ForecastError(var error: Exception) : WeatherUIState()
     object Empty : WeatherUIState()
 }

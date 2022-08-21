@@ -10,13 +10,15 @@ interface WeatherService {
     @GET("weather")
     suspend fun getCurrWeather(
         @Query("q") city: String,
-        @Query("appid") apiKey: String
+        @Query("appid") apiKey: String,
+        @Query("units") units: String = "metric"
     ):WeatherMain
 
     @GET("onecall")
     suspend fun getForecastWeather(
         @Query("lat") lat: String,
         @Query("lon") lon: String,
-        @Query("appid") apiKey: String
+        @Query("appid") apiKey: String,
+        @Query("units") units: String = "metric"
     ):WeatherForecast
 }

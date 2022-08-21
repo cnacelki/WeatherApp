@@ -3,34 +3,22 @@ package com.example.weatherapp.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.weatherapp.R
-import com.android.volley.toolbox.StringRequest
-import org.json.JSONObject
-import org.json.JSONArray
-import org.json.JSONException
-import com.android.volley.VolleyError
-import com.android.volley.RequestQueue
-import com.android.volley.toolbox.Volley
 import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
-import androidx.core.view.children
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.android.volley.Request
-import com.android.volley.Response
+import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.HourlyActivity
 import com.example.weatherapp.data.models.WeatherForecast
 import com.example.weatherapp.data.models.WeatherMain
 import com.example.weatherapp.databinding.ActivityMainBinding
-import com.example.weatherapp.thirdActivity
+import com.example.weatherapp.ui.adapters.ForecastAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.text.DecimalFormat
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.math.roundToInt
 
 @AndroidEntryPoint
@@ -46,19 +34,16 @@ class MainActivity() : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.weather.collect {
                     when (it) {
                         is WeatherUIState.MainSuccess -> {
                             currWeather = it.weatherResult
-                            binding.resultText.text = "${currWeather?.main?.temp} °C"
-                            binding.resultWind.text = "${currWeather?.wind?.speed} m/s"
-                            setWeather(currWeather?.weather?.get(0)?.description, binding.resultImg)
+                            setWeatherData()
                             getForecastData(
-                                currWeather?.coord?.lat?.roundToInt().toString(),
-                                currWeather?.coord?.lon?.roundToInt().toString()
+                                currWeather?.coord?.lat?.toInt().toString(),
+                                currWeather?.coord?.lon?.toInt().toString()
                             )
                         }
                         is WeatherUIState.Error -> {
@@ -70,6 +55,14 @@ class MainActivity() : AppCompatActivity() {
                         }
                         is WeatherUIState.ForecastSuccess -> {
                             forecastWeather = it.forecastResult
+                            setForecastData()
+                        }
+                        is WeatherUIState.ForecastError -> {
+                            Toast.makeText(
+                                applicationContext,
+                                it.error.toString(),
+                                Toast.LENGTH_LONG
+                            )
                         }
                     }
                 }
@@ -94,15 +87,20 @@ class MainActivity() : AppCompatActivity() {
     fun getForecastData(lat: String, lon: String) {
         viewModel.getForecastWeather(lat, lon, apikey)
     }
-
+    fun setForecastData() {
+        val recyclerView = findViewById<RecyclerView>(R.id.forecastRecyclerView)
+        recyclerView.adapter = forecastWeather?.let { ForecastAdapter(this, it.daily) }
+        recyclerView.setHasFixedSize(true)
+    }
+    fun setWeatherData() {
+        binding.resultText.text = "${currWeather?.main?.temp} °C"
+        binding.resultWind.text = "${currWeather?.wind?.speed} m/s"
+        setWeather(currWeather?.weather?.get(0)?.description, binding.resultImg)
+    }
     fun secondActivity(view: View?) {
         val intent = Intent(this, HourlyActivity::class.java)
         intent.putExtra("Url", "AAAAAAA")
         startActivity(intent)
     }
 
-    fun thirdActivity(view: View?) {
-        val intent = Intent(this, thirdActivity::class.java)
-        startActivity(intent)
-    }
 }

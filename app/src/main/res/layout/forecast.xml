@@ -3,26 +3,32 @@
     android:id="@+id/forecast"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     android:background="@drawable/daily_bg"
     android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/forecastDay"
         android:text="Day 1"
         style="@style/defaultText"></TextView>
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:id="@+id/forecastIcon"
         android:src="@drawable/weather"></ImageView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/forecastTemp"
         android:text="0°C"
         style="@style/defaultText"></TextView>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/forecastWind"
         android:text="0 m/s"
         android:layout_gravity="center"
         android:textSize="20dp"></TextView>

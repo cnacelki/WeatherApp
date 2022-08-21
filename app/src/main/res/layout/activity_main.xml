@@ -8,19 +8,10 @@
     android:background="@drawable/bg"
     tools:context=".ui.MainActivity">
 
-    <Button
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:onClick="thirdActivity"
-        android:layout_gravity="right"
-        android:background="@drawable/result_bg">
-
-    </Button>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
         <ImageView
@@ -97,50 +88,17 @@
                 android:text="Saatlik Veri"></Button>
         </LinearLayout>
     </LinearLayout>
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-
-        >
-        <LinearLayout
-            android:id="@+id/forecastLayout"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/forecastRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="bottom"
+            app:layoutManager="LinearLayoutManager"
             android:orientation="horizontal">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
-            <include layout="@layout/forecast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
-            <include layout="@layout/forecast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
-            <include layout="@layout/forecast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
-            <include layout="@layout/forecast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
-            <include layout="@layout/forecast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
-            <include layout="@layout/forecast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
-        </LinearLayout>
-    </HorizontalScrollView>
 
 </LinearLayout>
